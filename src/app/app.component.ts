@@ -7,6 +7,6 @@ import { UserComponent } from "./user/user.component";
   standalone: true,
   imports: [HeaderComponent, UserComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'], // <-- fix here
+  styleUrl: './app.component.css', 
 })
 export class AppComponent {}
