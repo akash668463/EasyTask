@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/akash668463/Angular-Project.git'
+                git 'https://github.com/akash668463/EasyTask.git'
             }
         }
         stage('Install Dependencies') {
@@ -14,10 +14,22 @@ pipeline {
                 bat 'npm install'
             }
         }
-        stage('Build') {
+        stage('Build Angular App') {
             steps {
-                bat 'npm run build'
+                bat 'npm run build -- --configuration production'
+            }
+        }
+        stage('Build Docker Image (Local)') {
+            steps {
+                bat 'docker build -t easytask-local:%BUILD_NUMBER% .'
+                bat 'docker tag easytask-local:%BUILD_NUMBER% easytask-local:latest'
             }
         }
     }
+    post {
+        always {
+            cleanWs()
+        }
+    }
 }
+//Testing pipline
