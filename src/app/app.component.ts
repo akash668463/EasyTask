@@ -8,7 +8,8 @@ import { DUMMY_USERS } from './dummy-users';
   standalone: true,
   imports: [HeaderComponent, UserComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css', 
+  styleUrls: ['./app.component.css'],
+
 })
 export class AppComponent {
   users = DUMMY_USERS;
